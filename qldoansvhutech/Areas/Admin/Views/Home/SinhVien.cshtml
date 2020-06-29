@@ -1,0 +1,143 @@
+﻿@using qldoansvhutech.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<qldoansvhutech.Models.Sinhvien>
+
+@{
+    
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>.....</text>
+    }
+}
+<script src="~/Scripts/jquery.min.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <input class="form-control" id="myInput" type="text"name="txtSearch" placeholder="Search..">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h3 class="card-title">Danh sách sinh viên</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>
+                                    @Html.DisplayName("STT")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("MSSV")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Họ tên")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Giới tính")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Ngày Sinh")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Email")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Lớp")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("GVHD")
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                @Html.DisplayFor(modelItem => item.STT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Taikhoan)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Hoten)
+                                </td>
+                                <td>
+                                    @if (@item.Gioitinh == true)
+                                    {
+                                        @Html.DisplayName("Nam")
+                                    }
+                                    else if (@item.Gioitinh == false)
+                                    {
+                                        @Html.DisplayName("Nữ")
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Lop)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Gvhd.Hoten)
+                                </td>
+                                <td class="td-actions text-right">
+                                    <a href="@Url.Action("Details", new { id = item.Id })" rel="tooltip" data-placement="left" title="Chi tiết" class="btn btn-info btn-simple">
+                                        <i class="material-icons">description</i>
+                                    </a>
+                                    <a href="@Url.Action("Edit", new { id = item.Id })" rel="tooltip" data-placement="left" title="Sửa" class="btn btn-success btn-simple">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+                    <div class="MenuTrang">
+                        @Html.PagedListPager(Model, page => Url.Action("SinhVien", new { page = page }))
+                    </div>
+                    <style>
+
+                        .MenuTrang ul {
+                            margin: 0 auto;
+                        }
+
+                        .MenuTrang li {
+                            display: inline;
+                            padding: 4px;
+                            border: 1px solid #d46cbe;
+                            margin: 2px;
+                        }
+
+                            .MenuTrang li:hover {
+                                background-color: purple;
+                                color: white;
+                            }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

@@ -1,0 +1,73 @@
+﻿@model qldoansvhutech.Models.Doan
+
+@{
+    ViewBag.Title = "Dangkydoan";
+    Layout = "~/Views/Shared/LayoutSV.cshtml";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <center style="width:350%" >
+        <h2 style="margin-top:50px">ĐĂNG KÝ ĐỒ ÁN SINH VIÊN</h2>
+
+        <table style="width:40%" class="table table-borderless">
+            <tr>
+                <td>Tên đồ án: </td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="txtTenDoAn" /></td>
+                @ViewData["Loi1"]
+            </tr>
+            <tr>
+                <td>Mô tả đồ án: </td>
+            </tr>
+            <tr>
+                <td><input type="text" row="7" class="form-control" name="txtMoTa" /></td>
+                @ViewData["Loi2"]
+            </tr>
+            <tr>
+                <td>Loại đồ án : </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="radMaloai" class="form-control">
+                        @foreach (var item in ViewBag.DSDA)
+                        {
+                            <option value="@item.Id">@item.Tenloai</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            @*<tr>
+                <td>Tên giảng viên hướng dẫn đồ án: </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="radMaGV" class="form-control">
+                        @foreach (var item in ViewBag.DSGV)
+                        {
+                            <option value="@item.Id">@item.Hoten</option>
+                        }
+                    </select>
+                </td>
+            </tr>*@
+        </table>
+        <input type="hidden" name="txtId" value="@ViewBag.Id"/>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="btndangky" type="submit" value="Đăng ký" class="btn btn-danger" />
+            </div>
+        </div>
+
+    </center>
+}
+<script>
+    $(document).ready(function () {
+        $("#btndangky").on("click", function () {
+            alert('Đăng ký thành công');
+        });
+    });
+    </script>

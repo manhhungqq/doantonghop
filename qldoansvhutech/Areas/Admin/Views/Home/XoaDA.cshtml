@@ -1,0 +1,50 @@
+﻿@model qldoansvhutech.Models.Doan
+
+@{
+    ViewBag.Title = "XoaDA";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div style="color:Red">
+    <h2>XÁC NHẬN THÔNG TIN SẢN PHẨM CẦN XÓA</h2>
+
+    <h3></h3>
+</div>
+<hr />
+<dl class="dl-horizontal" style="color:white">
+    <dt>
+        @Html.DisplayNameFor(model => model.Tenda)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Tenda)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Mota)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Id_gv)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Id_lda)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Id_sv)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a href="@Url.Action("DoAn", new { id = Model.Id })" rel="tooltip" data-placement="left" title="Back To List" class="btn btn-success btn-simple">
+            <i class="fa fa-sign-out"></i>
+        </a>
+    </div>
+
+}

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<qldoansvhutech.Models.Doan>
+@{
+    ViewBag.Title = "QLDoAn";
+    Layout = "~/Views/Shared/LayoutGV.cshtml";
+}
+
+<div class="container-fluid" style="margin-top:30px;width:70%;">
+    <center>
+        <div class="row">
+            <div class="col-12">
+                <h1>THÔNG TIN ĐỒ ÁN ĐÃ ĐĂNG KÝ</h1>
+                <table style="margin-top:20px" class="table">
+                    <tr>
+                        <th>
+                            Sinh viên thực hiện:
+                        </th>
+                        <th>
+                            Loại đồ án:
+                        </th>
+                        <th>
+                            Tên đề tài :
+                        </th>
+                        <th>
+                            Mô tả  :
+                        </th>
+                        <th>
+                            Chức năng
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Sinhvien.Hoten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LoaiDA.Tenloai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tenda)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mota)
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="@Url.Action("Congviectuan",new {id = item.Id})" style="color:white">Nhiệm vụ</a>
+                        <a class="btn btn-danger" href="@Url.Action("Chitietda", new { id = item.Id })" style="color:white">Chi tiết</a>
+
+                    </td>
+                </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </center>
+</div>
+

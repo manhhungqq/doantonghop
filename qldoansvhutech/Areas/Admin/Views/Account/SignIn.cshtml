@@ -1,0 +1,38 @@
+﻿ @model qldoansvhutech.Areas.Admin.Models.AdminViewModel
+
+@{
+
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutSignIn.cshtml";
+}
+
+<<div class="row">
+    <div class="col-2"></div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Đăng nhập</h4>
+            </div>
+            <div class="card-body">
+                @if (ViewBag.Message != null)
+                {
+                    <span class="text-danger">@ViewBag.Message</span>
+                }
+                <form method="post" @Url.Action("SignIn", "Account")>
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label for="Username">@Html.DisplayNameFor(model => model.Taikhoan)</label>
+                        @Html.EditorFor(model => model.Taikhoan, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Taikhoan, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">@Html.DisplayNameFor(model => model.Matkhau)</label>
+                        @Html.EditorFor(model => model.Matkhau, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Matkhau, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

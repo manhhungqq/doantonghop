@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/LayoutSV.cshtml";
+}
+
+@using (Html.BeginForm("Baocaotuan", "SinhVien", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="OK" />
+}
+

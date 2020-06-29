@@ -1,0 +1,46 @@
+﻿@model qldoansvhutech.Models.Congviectuan
+
+@{
+    ViewBag.Title = "Congviectuan";
+    Layout = "~/Views/Shared/LayoutGV.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <center style="margin-bottom:80px">
+        <h2 style="margin-top:50px">Công Việc</h2>
+
+        <table style="width:40%" class="table table-borderless">
+            <tr>
+                <td>Tuần: </td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="txtTuan" /></td>
+            </tr>
+            <tr>
+                <td>Ngày Bắt Đầu: </td>
+            </tr>
+            <tr>
+                <td><input type="date" class="form-control" name="NgayBd" /></td>
+            </tr>
+            <tr>
+                <td>Ngày Kết Thúc: </td>
+            </tr>
+            <tr>
+                <td><input type="date" class="form-control" name="NgayKt" /></td>
+            </tr>
+            <tr>
+                <td>Mô tả đồ án: </td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="txtMota" /></td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-danger" />
+            </div>
+        </div>
+    </center>
+}

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<qldoansvhutech.Models.Congviectuan>
+
+@{
+    ViewBag.Title = "Congviecduocgiao";
+    Layout = "~/Views/Shared/LayoutSV.cshtml";
+}
+<div class="container-fluid" style="margin-top:30px;width:70%;">
+    <center>
+        <div class="row">
+            <div class="col-12">
+                <h1>Công Việc Hàng Tuần</h1>
+                <table style="margin-top:20px" class="table">
+                    <tr>
+                        <th>
+                            Tuần :
+                        </th>
+                        <th>
+                            Ngày giao việc :
+                        </th>
+                        <th>
+                            Ngày phải hoàn thành :
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tuan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NgayBD)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NgayKT)
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="@Url.Action("Chitietcv",new {id = item.Id})" style="color:white">Chi tiết</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </center>
+</div>

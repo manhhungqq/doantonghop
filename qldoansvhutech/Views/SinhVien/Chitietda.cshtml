@@ -1,0 +1,58 @@
+﻿@model  qldoansvhutech.Models.Doan
+
+@{
+    ViewBag.Title = "Chitietda";
+    Layout = "~/Views/Shared/LayoutSV.cshtml";
+}
+
+<div class="container-fluid" style="margin-top:30px;width:70%;">
+    <center>
+        <div class="row">
+            <div class="col-12">
+                <h1>Chi Tiết Công Việc</h1>
+                <table style="margin-top:20px" class="table">
+                    <tr>
+                        <th>
+                            Tên đề tài :
+                        </th>
+                        <th>
+                            Sinh viên thực hiện :
+                        </th>
+                        <th>
+                            Loại đồ án :
+                        </th>
+                        <th>
+                            Email :
+                        </th>
+                        <th>
+                            Mô tả đề tài :
+                        </th>
+
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Tenda)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Sinhvien.Hoten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.LoaiDA.Tenloai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Sinhvien.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Mota)
+                        </td>
+
+                        <td>
+                            <a class="btn btn-danger" href="@Url.Action("ThongTinDoAn",new {id = Model.Id})" style="color:white">Quay lại</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </center>
+</div>

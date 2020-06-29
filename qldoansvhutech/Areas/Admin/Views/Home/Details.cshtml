@@ -1,0 +1,65 @@
+﻿@model qldoansvhutech.Models.Sinhvien
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div style="color:white">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           MSSV:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taikhoan)
+        </dd>
+
+        <dt>
+            Họ tên:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoten)
+        </dd>
+
+        <dt>
+            Ngày Sinh:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            Giới tính :
+        </dt>
+
+        <dd>
+            @if(Model.Gioitinh==true)
+            {
+                <p>Nam</p>
+            }
+            else
+            {
+                <p>Nữ</p>
+            }
+        </dd>
+        <dt>Hình</dt>
+        <dd>
+            <img src="@Url.Content("~/Images/"+ Model.Hinh)" style="width:120px" />
+        </dd>
+ 
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", new { id = Model.Id })" rel="tooltip" data-placement="left" title="Sửa" class="btn btn-success btn-simple">
+        <i class="material-icons">edit</i>
+    </a>
+    <a href="@Url.Action("SinhVien", new { id = Model.Id })" rel="tooltip" data-placement="left" title="Back To List" class="btn btn-success btn-simple">
+        <i class="fa fa-sign-out"></i>
+    </a>
+</p>

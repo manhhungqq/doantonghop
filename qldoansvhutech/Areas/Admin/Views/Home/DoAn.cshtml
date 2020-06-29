@@ -1,0 +1,96 @@
+﻿@using qldoansvhutech.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<qldoansvhutech.Models.Doan>
+
+@{
+    ViewBag.Title = "Đồ Án";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>.....</text>
+    }
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h3 class="card-title">Danh sách đồ án</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th>
+                                    @Html.DisplayName("Tên đề tài")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Loại đồ án")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Sinh Viên TH")
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tenda)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LoaiDA.Tenloai)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sinhvien.Hoten)
+                                    </td>
+                                   
+                                    
+                                    <td class="td-actions text-right">
+                                        <a href="@Url.Action("Details", new { id = item.Id })" rel="tooltip" data-placement="left" title="Chi tiết" class="btn btn-info btn-simple">
+                                            <i class="material-icons">description</i>
+                                        </a>
+                                        <a href="@Url.Action("Edit", new { id = item.Id })" rel="tooltip" data-placement="left" title="Sửa" class="btn btn-success btn-simple">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                        <a href="@Url.Action("XoaDA", new { id = item.Id })" rel="tooltip" data-placement="left" title="Xóa" class="btn btn-danger btn-simple">
+                                            <i class="material-icons">close</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <style>
+
+                        .MenuTrang ul {
+                            margin: 0 auto;
+                        }
+
+                        .MenuTrang li {
+                            display: inline;
+                            padding: 4px;
+                            border: 1px solid #d46cbe;
+                            margin: 2px;
+                        }
+
+                            .MenuTrang li:hover {
+                                background-color: purple;
+                                color: white;
+                            }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

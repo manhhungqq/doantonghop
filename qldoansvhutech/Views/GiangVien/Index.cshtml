@@ -1,0 +1,126 @@
+﻿@using qldoansvhutech.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutGV.cshtml";
+}
+@{
+    Gvhd gv = (Gvhd)Session["GiangVien"];
+
+}
+<div class="container">
+    <!-- Column -->
+    <div class="">
+        <div class="card">
+            <div class="card-body">
+                <center class="m-t-30">
+                    <img src="~/Images/@gv.Hinh" class="rounded-circle" width="150">
+                    <h4 class="card-title m-t-10">@gv.Hoten</h4>
+                </center>
+            </div>
+            <div>
+                <hr>
+            </div>
+            @*</div>
+                    <div class="card-body">
+                        <small class="text-muted">Email</small>
+                        <h6>@sv.Email</h6>
+                        <small class="text-muted p-t-30 db">Số Điện Thoại</small>
+                        <h6>@sv.Sdt</h6>
+                        <br>
+                    </div>
+                </div>*@
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="col-md-12">Họ Tên</label>
+                    <div class="col-md-12">
+                        <input type="text" name="txtHoTen" placeholder="@gv.Hoten" class="form-control form-control-line">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-email" class="col-md-12">Ngày Sinh</label>
+                    <div class="col-md-12">
+                        <input type="text" placeholder="@gv.NgaySinh" class="form-control form-control-line" name="txtNgaysinh" id="example-birthday">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">Giới Tính</label>
+                    <div class="col-sm-12">
+                        <select name="chkGT" class="gioitinh">
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-email" class="col-md-12">Email</label>
+                    <div class="col-md-12">
+                        <input type="email" placeholder="@gv.Email" class="form-control form-control-line" name="txtEmail" id="example-email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12">Số Điện Thoại</label>
+                    <div class="col-md-12">
+                        <input type="text" name="txtSDT" placeholder="@gv.Sdt" class="form-control form-control-line">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="submit" value="Save" class="btn btn-success" style="align-items:center;display:flex" />
+                        <input type="hidden" name="txtId" value="@gv.Id" />
+                    </div>
+                </div>
+                @* <form class="col-lg-8 col-xlg-9 col-md-9">
+                                <div class="card">
+                                    @*<div class="card-body">
+                    <div class="form-group">
+                        <label class="col-md-12">Họ Tên</label>
+                        <div class="col-md-12">
+                            <input type="text" name="txtHoTen" placeholder="@sv.Hoten" class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Lớp</label>
+                        <div class="col-md-12">
+                            <input type="text" name="txtLop" placeholder="@sv.Lop" class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email" class="col-md-12">Ngày Sinh</label>
+                        <div class="col-md-12">
+                            <input type="text" placeholder="@sv.NgaySinh" class="form-control form-control-line" name="txtNgaysinh" id="example-birthday">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email" class="col-md-12">Email</label>
+                        <div class="col-md-12">
+                            <input type="email" placeholder="@sv.Email" class="form-control form-control-line" name="txtEmail" id="example-email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-12">Số Điện Thoại</label>
+                        <div class="col-md-12">
+                            <input type="text" name="txtSDT" placeholder="@sv.Sdt" class="form-control form-control-line">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-12">Giới Tính</label>
+                        <div class="col-sm-12">
+                            <select name="chkGT" class="gioitinh">
+                                <option value="1">Nam</option>
+                                <option value="0">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <input type="submit" value="Save" class="btn btn-success" />
+                            <input type="hidden" name="txtId" value="@sv.Id" />
+                        </div>*@
+
+            </div>
+        </div>
+    </div>
+</div>

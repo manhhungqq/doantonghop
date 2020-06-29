@@ -1,0 +1,63 @@
+﻿@model  qldoansvhutech.Models.Congviectuan
+
+@{
+    ViewBag.Title = "Chitietda";
+    Layout = "~/Views/Shared/LayoutGV.cshtml";
+}
+
+<div class="container-fluid" style="margin-top:30px;width:70%;">
+    <center>
+        <div class="row">
+            <div class="col-12">
+                <h1>THÔNG TIN ĐỒ ÁN ĐÃ ĐĂNG KÝ</h1>
+                <table style="margin-top:20px" class="table">
+                    <tr>
+                        <th>
+                            Tuần :
+                        </th>
+                        <th>
+                            Sinh viên thực hiện :
+                        </th>
+                        <th>
+                            Ngày giao việc :
+                        </th>
+                        <th>
+                            Ngày hoàn thành :
+                        </th>
+                        <th>
+                            Công việc :
+                        </th>
+                        <th>
+                            Url :
+                        </th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Tuan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Sinhvien.Hoten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.NgayBD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.NgayKT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Mota)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.url)
+                        </td>
+
+                        <td>
+                            <a class="btn btn-danger" href="@Url.Action("Lichcongviecsv","GiangVien",new {id = Model.Id})" style="color:white">Quay lại</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </center>
+</div>
